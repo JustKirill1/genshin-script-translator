@@ -77,12 +77,15 @@ def test_main_window_flow(tmp_path, monkeypatch):
         sd = SettingsDialog(w.app_settings)
         sd.apply()
         w.history_dock.refresh()
-        w.open_history_entry(w.history.entries[0].id)
+        w.open_history_entry(w.history.entries[0].id)      # starts recognition in a worker thread
+        if w._thread is not None:
+            w._thread.wait(60000)
+            QApplication.processEvents()                     # deliver the queued "done" signal
+        assert w._thread is None and w.result is not None
 
         from genshin_script_translator.render import render_annotated
-        out = render_annotated(w.image, w.result, box, "test")
+        out = render_annotated(w.image, w.result, None, "test")
         assert out.shape[0] > 50
-        w._thread = None
         w.close()
 
 
