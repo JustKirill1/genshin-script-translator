@@ -28,6 +28,7 @@ from .dialogs import (AcceptDialog, ExportLibraryDialog, ImportLibraryDialog, Se
 from .history_panel import HistoryDock
 from .image_view import ImageView
 from .library_window import LibraryWindow
+from .manual_window import ManualWindow
 from .qt_utils import bgr_to_qimage, qimage_to_bgr
 
 IMAGE_FILTER_KEY = "dialog.image_filter"
@@ -118,6 +119,8 @@ class MainWindow(QMainWindow):
         group.addAction(self.a_rect)
         group.addAction(self.a_lasso)
         self.a_library = self._act("action.library", self.show_library, "Ctrl+L")
+        self.a_manual = self._act("action.manual", self.show_manual, "Ctrl+M")
+        self.a_manual.setToolTip(tr("panel.manual_tip"))
         self.a_import_lib = self._act("action.import_library", self.import_library)
         self.a_export_lib = self._act("action.export_library", self.export_library)
         self.a_history = self.history_dock.toggleViewAction()
@@ -135,7 +138,8 @@ class MainWindow(QMainWindow):
         for a in (self.a_recognize, self.a_accept, None, self.a_rect, self.a_lasso, self.a_eraser, self.a_clear_sel):
             m.addSeparator() if a is None else m.addAction(a)
         m = mb.addMenu(tr("menu.tools"))
-        for a in (self.a_library, self.a_import_lib, self.a_export_lib, None, self.a_history, None, self.a_settings):
+        for a in (self.a_manual, None, self.a_library, self.a_import_lib, self.a_export_lib, None, self.a_history,
+                  None, self.a_settings):
             m.addSeparator() if a is None else m.addAction(a)
         m = mb.addMenu(tr("menu.help"))
         m.addAction(self.a_repo)
@@ -147,7 +151,7 @@ class MainWindow(QMainWindow):
         self.addToolBar(tb)
         for a in (self.a_open, self.a_paste, self.a_capture, None, self.a_recognize, None,
                   self.a_rect, self.a_lasso, self.a_eraser, self.a_clear_sel, self.a_fit, None,
-                  self.a_library, self.a_history, self.a_export_img, self.a_settings):
+                  self.a_manual, self.a_library, self.a_history, self.a_export_img, self.a_settings):
             tb.addSeparator() if a is None else tb.addAction(a)
 
     def _build_panel(self) -> QWidget:
@@ -222,7 +226,14 @@ class MainWindow(QMainWindow):
         self.btn_run.setMinimumHeight(38)
         self.btn_run.setObjectName("primary")
         self.btn_run.clicked.connect(self.recognize)
-        lay.addWidget(self.btn_run)
+        run_row = QHBoxLayout()
+        run_row.addWidget(self.btn_run, 1)
+        self.btn_manual = QPushButton(tr("panel.manual"))
+        self.btn_manual.setMinimumHeight(38)
+        self.btn_manual.setToolTip(tr("panel.manual_tip"))
+        self.btn_manual.clicked.connect(self.show_manual)
+        run_row.addWidget(self.btn_manual)
+        lay.addLayout(run_row)
 
         self.lbl_info = QLabel("—")
         self.lbl_info.setWordWrap(True)
@@ -677,6 +688,24 @@ class MainWindow(QMainWindow):
         QMessageBox.information(self, tr("import_lib.title"), tr("import_lib.done", added=added, skipped=skipped))
         self._refresh_library_window()
         self._library_changed()
+
+    # ------------------------------------------------------------------ manual mode
+    def show_manual(self):
+        if self.engine is None:
+            return
+        crop = None
+        if self.image is not None:
+            crop, _, _, _ = self._crop()
+        if self.result is not None:
+            key = self.result.alphabet.key
+        elif self.cb_alpha.currentData() != "auto":
+            key = self.cb_alpha.currentData()
+        else:
+            key = self.engine.alphabets[0].key
+        text = self.result.raw_text() if self.result is not None else ""
+        self._manual_window = ManualWindow(self.engine, crop, key, text, self)
+        self._manual_window.show()
+        self._manual_window.raise_()
 
     # ------------------------------------------------------------------ export image, settings, about
     def export_image(self):

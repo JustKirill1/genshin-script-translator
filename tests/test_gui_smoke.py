@@ -85,6 +85,21 @@ def test_main_window_flow(tmp_path, monkeypatch):
             QApplication.processEvents()                     # deliver the queued "done" signal
         assert w._thread is None and w.result is not None
 
+        from genshin_script_translator.gui.manual_window import ManualWindow
+        mw = ManualWindow(w.engine, w.image, "common", "SMITHSHOP")
+        assert "SMITH SHOP" in mw.result.toPlainText()
+        mw._clear()
+        for ch in "FINE":
+            mw._insert(ch)
+        mw._insert(" ")
+        mw._backspace()
+        assert mw.text() == "FINE"
+        mw.cb_alpha.setCurrentIndex(mw.cb_alpha.findData("inazuma"))
+        mw.chk_letters.setChecked(False)
+        assert mw.result.toPlainText() == "FINE"           # no English dictionary for Inazuma
+        w.show_manual()
+        mw.close()
+
         from genshin_script_translator.render import render_annotated
         out = render_annotated(w.image, w.result, None, "test")
         assert out.shape[0] > 50

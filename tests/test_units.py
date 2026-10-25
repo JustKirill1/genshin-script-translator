@@ -103,3 +103,13 @@ def test_settings_roundtrip():
     t = AppSettings.load(path)
     assert (t.language, t.history_limit, t.author) == ("ru", 50, "Kirill")
     assert AppSettings.load(path + ".missing").language == "en"
+
+
+def test_manual_mode_helpers(bare_engine):
+    from genshin_script_translator.render import render_glyph_text
+    lines = bare_engine.decode_plain("smithshop\nfine food")
+    assert [[t for t, _ in ln] for ln in lines] == [["SMITH", "SHOP"], ["FINE", "FOOD"]]
+    assert bare_engine.decode_plain("MSMSKS", english=False) == [[("MSMSKS", False)]]
+    img = render_glyph_text(bare_engine.alphabet("fontaine"), "COUTURE\nAB")
+    assert img is not None and img.shape[0] > 2 * 40 and img.max() == 235
+    assert render_glyph_text(bare_engine.alphabet("common"), "") is None

@@ -1,12 +1,10 @@
 {
   "_language_name": "Русский",
-
   "menu.file": "&Файл",
   "menu.edit": "&Правка",
   "menu.tools": "&Инструменты",
   "menu.help": "&Справка",
   "menu.toolbar": "Панель инструментов",
-
   "action.open": "Открыть…",
   "action.paste": "Вставить",
   "action.screenshot": "Снимок экрана",
@@ -27,7 +25,6 @@
   "action.settings": "Настройки…",
   "action.about": "О программе",
   "action.project_page": "Страница проекта на GitHub",
-
   "panel.options": "Параметры",
   "panel.alphabet": "Алфавит:",
   "panel.direction": "Направление:",
@@ -55,7 +52,6 @@
   "panel.tab_result": "Результат",
   "panel.tab_chart": "Таблица алфавита",
   "panel.no_alphabet": "Алфавит не выбран",
-
   "option.auto": "авто",
   "option.auto_detect": "Автоопределение",
   "orientation.auto": "Авто",
@@ -75,7 +71,6 @@
   "polarity.auto": "Авто",
   "polarity.light": "Светлый на тёмном",
   "polarity.dark": "Тёмный на светлом",
-
   "alphabet.common": "Общий язык Тейвата (Мондштадт, Ли Юэ)",
   "alphabet.inazuma": "Инадзума",
   "alphabet.sumeru": "Сумеру",
@@ -86,10 +81,8 @@
   "alphabet_note.inazuma": "Текст Инадзумы — это японский латиницей, где обычно пишется только первая буква каждого слога (ka, ki, ku → K), поэтому результат — буквенный «скелет», а не английский. Словарь не применяется.",
   "alphabet_note.ancient": "Два знака в таблице не расшифрованы — выводятся как «?».",
   "alphabet_note.nodkrai": "В таблице нет знаков для J, Q, X.",
-
   "result.confidence": "уверенность {value}%",
   "result.alternatives": "другие варианты",
-
   "glyph.choose": "Выбрать букву",
   "glyph.other": "Другая буква…",
   "glyph.other_title": "Буква",
@@ -98,7 +91,6 @@
   "glyph.remove": "Убрать (это не буква)",
   "glyph.remove_noise": "Убрать и запомнить как шум",
   "glyph.reset": "Вернуть автоматическую",
-
   "accept.title": "Принять оставшиеся буквы",
   "accept.info": "Отмеченные буквы сохранятся в библиотеку как правильные образцы. Красные распознаны неуверенно — проверь их: неправильный образец ухудшит распознавание.",
   "accept.low_conf": "Низкая уверенность",
@@ -106,7 +98,6 @@
   "accept.check_none": "Снять все",
   "accept.uncheck_low": "Снять красные",
   "accept.learn": "Выучить отмеченные",
-
   "library.title": "Библиотека букв",
   "library.summary": "Образцов: {total} — встроенных {builtin}, моих {user}, импортированных {imported}",
   "library.letter": "Буква:",
@@ -129,14 +120,12 @@
   "library.restored": "Возвращено встроенных образцов: {n}.",
   "library.import": "Импорт…",
   "library.export": "Экспорт…",
-
   "export_lib.title": "Экспорт библиотеки",
   "export_lib.info": "Какие алфавиты экспортировать:",
   "export_lib.include_builtin": "Включить встроенные образцы",
   "export_lib.include_noise": "Включить образцы шума",
   "export_lib.save": "Сохранить…",
   "export_lib.done": "Экспортировано образцов: {n}\n{path}\n\nПоделись файлом с другими игроками или пришли его в проект через pull request (папка community/).",
-
   "import_lib.title": "Импорт библиотеки",
   "import_lib.info": "{file}\nАвтор: {author}\nОбразцов: {total}\n\nКакие алфавиты импортировать:",
   "import_lib.unknown_author": "неизвестен",
@@ -144,14 +133,12 @@
   "import_lib.import": "Импортировать",
   "import_lib.done": "Добавлено образцов: {added}, пропущено дубликатов: {skipped}.",
   "import_lib.bad_file": "Это не файл библиотеки букв:\n{error}",
-
   "history.title": "История",
   "history.clear": "Очистить",
   "history.clear_confirm": "Удалить всю историю?",
   "history.open": "Открыть",
   "history.delete": "Удалить",
   "history.missing": "Картинка этой записи не найдена.",
-
   "settings.title": "Настройки",
   "settings.language": "Язык:",
   "settings.export_dir": "Папка для экспорта картинок:",
@@ -163,12 +150,10 @@
   "settings.open_folder": "Открыть папку",
   "settings.portable": "Портативный режим (portable.txt): данные хранятся рядом с программой.",
   "settings.restart": "Язык сменится после перезапуска программы.",
-
   "dialog.open_title": "Открыть скриншот",
   "dialog.image_filter": "Изображения (*.png *.jpg *.jpeg *.webp *.bmp *.tif *.tiff);;Все файлы (*)",
   "dialog.gsrlib_filter": "Библиотека букв (*.gsrlib)",
   "dialog.gsrlib_open_filter": "Библиотека букв (*.gsrlib);;Индекс библиотеки версии 0.0 (index.json)",
-
   "status.loading": "Загрузка алфавитов…",
   "status.loaded": "Алфавитов: {alphabets}, слов в словаре: {words}, образцов букв: {samples}.",
   "status.hint": "Открой скриншот (Ctrl+O), вставь из буфера (Ctrl+V) или перетащи файл. Выделяй мышью (R — прямоугольник, L — лассо, Alt — ластик), клик по букве — исправить, колесо — масштаб, ПКМ — двигать.",
@@ -176,7 +161,7 @@
   "status.select_area": "Выдели мышью область с надписью — распознавание запустится само.",
   "status.no_clipboard_image": "В буфере обмена нет изображения.",
   "status.need_color": "Режим «по цвету»: нажми «Пипетка» и кликни по букве на изображении.",
-  "status.nothing_found": "Буквы не найдены. Выдели надпись поточнее или смени режим выделения букв.",
+  "status.nothing_found": "Буквы не найдены. Выдели надпись поточнее, смени режим выделения букв или воспользуйся ручным режимом (Ctrl+M).",
   "status.learned": "Запомнил образец «{char}» ({alphabet}). Образцов в библиотеке: {total}.",
   "status.learned_noise": "Запомнил как шум: похожие пятна будут игнорироваться.",
   "status.accepted": "Подтверждено букв: {n}, новых образцов: {learned}. Образцов в библиотеке: {total}.",
@@ -185,7 +170,6 @@
   "status.exported": "Сохранено: {path}",
   "status.pick_color": "Кликни по букве на изображении, чтобы взять её цвет.",
   "status.copied": "Скопировано.",
-
   "common.error": "Ошибка",
   "common.browse": "Обзор…",
   "error.load_alphabets": "Не удалось загрузить таблицы алфавитов:\n{error}",
@@ -194,6 +178,20 @@
   "error.screenshot": "Не удалось сделать снимок экрана.",
   "error.save": "Не удалось сохранить {path}",
   "error.crash": "{error}\n\nПодробности записаны в\n{log}",
-
-  "about.text": "<b>{app}</b> {version}<br><br>Читает письменности Тейвата на скриншотах Genshin Impact и выдаёт английский текст.<br><br>Неофициальный фанатский проект, не связан с HoYoverse. Таблицы алфавитов: Genshin Impact Wiki (Fandom), CC BY-SA 3.0.<br><br><a href=\"{url}\">{url}</a>"
+  "about.text": "<b>{app}</b> {version}<br><br>Читает письменности Тейвата на скриншотах Genshin Impact и выдаёт английский текст.<br><br>Неофициальный фанатский проект, не связан с HoYoverse. Таблицы алфавитов: Genshin Impact Wiki (Fandom), CC BY-SA 3.0.<br><br><a href=\"{url}\">{url}</a>",
+  "action.manual": "Ручной режим…",
+  "panel.manual": "Вручную…",
+  "panel.manual_tip": "Выбирать увиденные глифы из палитры, если автоматическое распознавание не справляется",
+  "manual.title": "Ручной режим",
+  "manual.hint": "Смотри на надпись и нажимай подходящие глифы внизу — или печатай латинские буквы. Текст и результат словаря обновляются сразу.",
+  "manual.reference": "Скриншот:",
+  "manual.zoom": "Масштаб",
+  "manual.no_image": "Нет изображения — открой или вставь скриншот в главном окне.",
+  "manual.show_letters": "Показывать латинские буквы на кнопках",
+  "manual.space": "Пробел",
+  "manual.backspace": "⌫ Удалить",
+  "manual.newline": "Новая строка",
+  "manual.clear": "Очистить",
+  "manual.glyphs": "Твои глифы:",
+  "manual.latin": "Латинские буквы (можно править):"
 }

@@ -1,12 +1,10 @@
 {
   "_language_name": "English",
-
   "menu.file": "&File",
   "menu.edit": "&Edit",
   "menu.tools": "&Tools",
   "menu.help": "&Help",
   "menu.toolbar": "Main toolbar",
-
   "action.open": "Open…",
   "action.paste": "Paste",
   "action.screenshot": "Screenshot",
@@ -27,7 +25,6 @@
   "action.settings": "Settings…",
   "action.about": "About",
   "action.project_page": "Project page on GitHub",
-
   "panel.options": "Options",
   "panel.alphabet": "Alphabet:",
   "panel.direction": "Direction:",
@@ -55,7 +52,6 @@
   "panel.tab_result": "Result",
   "panel.tab_chart": "Alphabet chart",
   "panel.no_alphabet": "No alphabet selected",
-
   "option.auto": "auto",
   "option.auto_detect": "Auto-detect",
   "orientation.auto": "Auto",
@@ -75,7 +71,6 @@
   "polarity.auto": "Auto",
   "polarity.light": "Light on dark",
   "polarity.dark": "Dark on light",
-
   "alphabet.common": "Teyvat Common (Mondstadt, Liyue)",
   "alphabet.inazuma": "Inazuma",
   "alphabet.sumeru": "Sumeru",
@@ -86,10 +81,8 @@
   "alphabet_note.inazuma": "Inazuman text is romanized Japanese, usually written with only the first letter of each syllable (ka, ki, ku → K), so the result is a letter skeleton, not English. The dictionary is not used.",
   "alphabet_note.ancient": "Two signs of the chart are undeciphered and are shown as \"?\".",
   "alphabet_note.nodkrai": "The chart has no signs for J, Q and X.",
-
   "result.confidence": "confidence {value}%",
   "result.alternatives": "other candidates",
-
   "glyph.choose": "Choose a letter",
   "glyph.other": "Another letter…",
   "glyph.other_title": "Letter",
@@ -98,7 +91,6 @@
   "glyph.remove": "Remove (not a letter)",
   "glyph.remove_noise": "Remove and learn as noise",
   "glyph.reset": "Back to automatic",
-
   "accept.title": "Accept remaining letters",
   "accept.info": "Checked letters will be saved to the library as correct samples. Letters in red are recognized with low confidence — check them carefully: a wrong sample makes recognition worse.",
   "accept.low_conf": "Low confidence",
@@ -106,7 +98,6 @@
   "accept.check_none": "Uncheck all",
   "accept.uncheck_low": "Uncheck red",
   "accept.learn": "Learn checked",
-
   "library.title": "Glyph library",
   "library.summary": "{total} samples: {builtin} built-in, {user} mine, {imported} imported",
   "library.letter": "Letter:",
@@ -129,14 +120,12 @@
   "library.restored": "Restored built-in samples: {n}.",
   "library.import": "Import…",
   "library.export": "Export…",
-
   "export_lib.title": "Export library",
   "export_lib.info": "Alphabets to export:",
   "export_lib.include_builtin": "Include built-in samples",
   "export_lib.include_noise": "Include noise samples",
   "export_lib.save": "Save…",
   "export_lib.done": "Exported {n} samples to\n{path}\n\nShare the file with other players or send it to the project via a pull request (community/ folder).",
-
   "import_lib.title": "Import library",
   "import_lib.info": "{file}\nAuthor: {author}\nSamples: {total}\n\nAlphabets to import:",
   "import_lib.unknown_author": "unknown",
@@ -144,14 +133,12 @@
   "import_lib.import": "Import",
   "import_lib.done": "Added {added} samples, skipped {skipped} duplicates.",
   "import_lib.bad_file": "This is not a glyph library file:\n{error}",
-
   "history.title": "History",
   "history.clear": "Clear",
   "history.clear_confirm": "Delete the whole history?",
   "history.open": "Open",
   "history.delete": "Delete",
   "history.missing": "The image of this entry is missing.",
-
   "settings.title": "Settings",
   "settings.language": "Language:",
   "settings.export_dir": "Folder for exported images:",
@@ -163,12 +150,10 @@
   "settings.open_folder": "Open folder",
   "settings.portable": "Portable mode (portable.txt): data is kept next to the program.",
   "settings.restart": "The language will change after restarting the program.",
-
   "dialog.open_title": "Open screenshot",
   "dialog.image_filter": "Images (*.png *.jpg *.jpeg *.webp *.bmp *.tif *.tiff);;All files (*)",
   "dialog.gsrlib_filter": "Glyph library (*.gsrlib)",
   "dialog.gsrlib_open_filter": "Glyph library (*.gsrlib);;Library index from version 0.0 (index.json)",
-
   "status.loading": "Loading alphabets…",
   "status.loaded": "Alphabets: {alphabets}, dictionary words: {words}, glyph samples: {samples}.",
   "status.hint": "Open a screenshot (Ctrl+O), paste it (Ctrl+V) or drop a file. Drag to select an area (R rectangle, L lasso, Alt — eraser), click a letter to correct it, wheel to zoom, right button to pan.",
@@ -176,7 +161,7 @@
   "status.select_area": "Select the inscription with the mouse — recognition starts automatically.",
   "status.no_clipboard_image": "There is no image in the clipboard.",
   "status.need_color": "\"By colour\" mode: press Pick and click a letter in the image.",
-  "status.nothing_found": "No letters found. Select the inscription more precisely or change the letter detection mode.",
+  "status.nothing_found": "No letters found. Select the inscription more precisely, change the letter detection mode, or use Manual mode (Ctrl+M).",
   "status.learned": "Saved a sample of \"{char}\" ({alphabet}). Samples in the library: {total}.",
   "status.learned_noise": "Saved as noise: similar specks will be ignored.",
   "status.accepted": "Confirmed {n} letters, new samples: {learned}. Samples in the library: {total}.",
@@ -185,7 +170,6 @@
   "status.exported": "Saved {path}",
   "status.pick_color": "Click a letter in the image to take its colour.",
   "status.copied": "Copied.",
-
   "common.error": "Error",
   "common.browse": "Browse…",
   "error.load_alphabets": "Could not load the alphabet charts:\n{error}",
@@ -194,6 +178,20 @@
   "error.screenshot": "Could not take a screenshot.",
   "error.save": "Could not save {path}",
   "error.crash": "{error}\n\nDetails were written to\n{log}",
-
-  "about.text": "<b>{app}</b> {version}<br><br>Reads Teyvat scripts from Genshin Impact screenshots and outputs English text.<br><br>Unofficial fan project, not affiliated with HoYoverse. Alphabet charts: Genshin Impact Wiki (Fandom), CC BY-SA 3.0.<br><br><a href=\"{url}\">{url}</a>"
+  "about.text": "<b>{app}</b> {version}<br><br>Reads Teyvat scripts from Genshin Impact screenshots and outputs English text.<br><br>Unofficial fan project, not affiliated with HoYoverse. Alphabet charts: Genshin Impact Wiki (Fandom), CC BY-SA 3.0.<br><br><a href=\"{url}\">{url}</a>",
+  "action.manual": "Manual mode…",
+  "panel.manual": "Manual…",
+  "panel.manual_tip": "Pick the glyphs you see from a palette when automatic recognition fails",
+  "manual.title": "Manual mode",
+  "manual.hint": "Look at the inscription and click the matching glyphs below — or type Latin letters. The text and the dictionary result update as you go.",
+  "manual.reference": "Screenshot:",
+  "manual.zoom": "Zoom",
+  "manual.no_image": "No image — open or paste a screenshot in the main window.",
+  "manual.show_letters": "Show Latin letters on the buttons",
+  "manual.space": "Space",
+  "manual.backspace": "⌫ Delete",
+  "manual.newline": "New line",
+  "manual.clear": "Clear",
+  "manual.glyphs": "Your glyphs:",
+  "manual.latin": "Latin letters (editable):"
 }

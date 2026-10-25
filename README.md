@@ -25,6 +25,8 @@ recognizes each glyph, maps it to its Latin letter and fixes the words with an E
 - **Learns from you**: click a letter to correct it — the glyph is saved to your library and
   recognized next time. "Accept remaining letters" confirms the rest in one go.
 - **Noise removal**: remove a false "letter", or learn it as noise so similar specks are ignored.
+- **Manual mode** for inscriptions the recognizer can't handle: click the glyphs you see on an
+  on-screen glyph keyboard and get the text.
 - **Shareable glyph library**: view, relabel and delete samples; export/import `.gsrlib` files to
   share with other players.
 - **Dictionary correction** that splits run-together words (`SMITHSHOP` → `SMITH SHOP`) and only
@@ -112,6 +114,16 @@ beside it.
 
 The game font differs a little from the alphabet charts, so ten or twenty corrections noticeably
 improve recognition of a script.
+
+### Manual mode
+
+When automatic recognition just won't cooperate (strong glow, steep angle, tiny or damaged text),
+open **Manual mode** (`Ctrl+M` or the *Manual…* button). The screenshot or your selection stays on
+top for reference (with zoom); below is a keyboard made of the alphabet's glyphs. Click the glyphs you
+see — or type Latin letters — and the window shows your glyphs as script, the Latin letters and the
+dictionary result (run-together words are split for you). If something was already recognized, the
+window opens with that text so you only fix the mistakes. Uncheck *Show Latin letters on the buttons*
+to decode by eye, like a puzzle.
 
 ### Glyph library
 
@@ -254,6 +266,8 @@ values and set `"_language_name"`; it appears in Settings. `pytest` checks that 
 - **Учится у тебя**: клик по букве — исправить, знак сохраняется в библиотеку и в следующий раз
   узнаётся. «Принять оставшиеся буквы» подтверждает остальные за раз.
 - **Удаление шума**: убрать ложную «букву» или запомнить её как шум, чтобы похожие пятна игнорировались.
+- **Ручной режим** для надписей, с которыми распознавание не справляется: нажимай увиденные глифы на
+  экранной «клавиатуре» из знаков и получай текст.
 - **Библиотека букв, которой можно делиться**: просмотр, смена буквы, удаление образцов;
   экспорт и импорт файлов `.gsrlib` для обмена с другими игроками.
 - **Словарная коррекция**: разбивает слипшиеся слова (`SMITHSHOP` → `SMITH SHOP`) и меняет только
@@ -341,6 +355,16 @@ python main.py
 
 Игровой шрифт немного отличается от таблиц алфавитов, поэтому десяток-другой исправлений заметно
 улучшает распознавание письменности.
+
+### Ручной режим
+
+Если автоматическое распознавание никак не справляется (сильное свечение, крутой угол, мелкий или
+повреждённый текст), открой **Ручной режим** (`Ctrl+M` или кнопка «Вручную…»). Сверху остаётся
+скриншот или выделенная область (с масштабом), снизу — «клавиатура» из глифов алфавита. Нажимай
+знаки, которые видишь, — или печатай латинские буквы, — и окно покажет твои глифы письменностью,
+латинские буквы и результат словаря (слитные слова разделяются сами). Если что-то уже распознано,
+окно откроется с этим текстом, и останется только поправить ошибки. Сними галочку «Показывать
+латинские буквы на кнопках», чтобы расшифровывать на глаз, как головоломку.
 
 ### Библиотека букв
 

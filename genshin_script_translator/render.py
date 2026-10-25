@@ -101,3 +101,36 @@ def render_annotated(img: np.ndarray, result, box: tuple[int, int, int, int] | N
     (mw, _), _ = cv2.getTextSize(mark, FONT, 0.45, 1)
     cv2.putText(footer, mark, (width - mw - margin, footer_h - 10), FONT, 0.45, GREY, 1, cv2.LINE_AA)
     return np.vstack([view, footer])
+
+
+GLYPH_H = 40           # height of glyphs in the composed preview
+
+
+def render_glyph_text(alphabet, text: str, height: int = GLYPH_H) -> np.ndarray | None:
+    """Draw ``text`` (Latin letters) with the alphabet's chart glyphs: white on dark, one row per line."""
+    tpl = {}
+    for t in alphabet.templates:
+        tpl.setdefault(t.char, t.mask)
+    gap, space, pad = max(3, height // 8), height // 2, 8
+    rows = []
+    for line in text.upper().split("\n"):
+        pieces = []
+        for ch in line:
+            m = tpl.get(ch)
+            if m is None:
+                pieces.append(np.zeros((height, space), np.uint8))
+                continue
+            s = height / m.shape[0]
+            g = cv2.resize(m, (max(1, int(m.shape[1] * s)), height), interpolation=cv2.INTER_AREA)
+            pieces.append(g)
+            pieces.append(np.zeros((height, gap), np.uint8))
+        rows.append(np.hstack(pieces) if pieces else np.zeros((height, 1), np.uint8))
+    width = max(r.shape[1] for r in rows) + 2 * pad
+    if width <= 2 * pad + 1:
+        return None
+    canvas = np.full((len(rows) * (height + gap * 2) + pad, width), 0, np.uint8)
+    y = pad
+    for r in rows:
+        canvas[y:y + height, pad:pad + r.shape[1]] = r
+        y += height + gap * 2
+    return np.where(canvas > 0, 235, 30).astype(np.uint8)

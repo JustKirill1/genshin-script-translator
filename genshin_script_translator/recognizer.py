@@ -665,6 +665,26 @@ class Engine:
         return max(1.9 * med + 0.08 * S, 0.33 * S)
 
     # -------------------------------------------------------------- dictionary
+    def decode_plain(self, text: str, english: bool = True) -> list[list[tuple[str, bool]]]:
+        """Dictionary pass over text typed by hand (manual mode): letters are certain, so only
+        word boundaries change (SMITHSHOP → SMITH SHOP). Returns line → [(word, changed?)]."""
+        letters = [chr(65 + i) for i in range(26)]
+        out = []
+        for line in text.upper().split("\n"):
+            words = [w for w in line.split() if w]
+            if not english or not words:
+                out.append([(w, False) for w in words])
+                continue
+            items = []
+            for w in words:
+                scores = np.zeros((len(w), 26), np.float32)
+                for i, ch in enumerate(w):
+                    if "A" <= ch <= "Z":
+                        scores[i, ord(ch) - 65] = 1.0
+                items.append((scores, w, {}))
+            out.append(self.lexicon.decode_line(items, letters))
+        return out
+
     def apply_dictionary(self, r: Result, enabled: bool = True):
         r.corrected = []
         if not r.alphabet.spec.english:     # e.g. Inazuma: romanized Japanese, not English
