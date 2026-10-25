@@ -11,12 +11,13 @@ A desktop app that reads the in-game scripts of Teyvat from Genshin Impact scree
 them into English text. Every Teyvat script is a letter-for-letter cipher of English, so the app
 recognizes each glyph, maps it to its Latin letter and fixes the words with an English dictionary.
 
-![Main window](docs/images/app-overview.png)
+![Main window: a Mondstadt letter decoded](docs/images/example-teyvat-general.png)
 
 ## Features
 
 - **7 scripts**, detected automatically: Teyvat Common (Mondstadt, Liyue), Inazuma, Sumeru,
-  Desert (Deshret), Fontaine, the ancient Teyvat script and Nod-Krai.
+  Desert (Deshret), Fontaine, the ancient Teyvat script and Nod-Krai. (Inazuman text is abbreviated
+  romanized Japanese rather than English — see Examples.)
 - **Screenshot in, text out**: paste from the clipboard (`Win+Shift+S`, then `Ctrl+V`, or let the
   app watch the clipboard), open a file, drop it on the window, or take a screenshot (`F9`).
 - **Free-form selection**: rectangle, lasso, and an eraser (`Alt`) to cut out sign frames and noise.
@@ -33,20 +34,37 @@ recognizes each glyph, maps it to its Latin letter and fixes the words with an E
 
 ## Examples
 
-| Mondstadt (Teyvat Common) | Fontaine |
-|---|---|
-| ![Mondstadt sign](docs/images/example-mondstadt.png) | ![Fontaine inscription](docs/images/example-fontaine.png) |
+All screenshots show the app reading real in-game inscriptions.
+
+**Teyvat Common (Mondstadt)** — the letter above: *"TO DEAR MISS BARBARA / I HAVE STOLEN AND BURIED
+YOUR / MOST PRECIOUS THING"*.
 
 **Sumeru** — *"FAREWELL ATOSSA / I APOLOGIZE / FOR MAKING YOU KNOW ME / UNWILLINGLY / STILL I DONT
-WISH / YOU TO FORGET ME"*, read from a full 1920×1080 screenshot:
+WISH / YOU TO FORGET ME"*, from a full 1920×1080 screenshot:
 
 ![Sumeru inscription](docs/images/example-sumeru.png)
 
-**Inazuma, Deshret, Nod-Krai, ancient script — screenshots wanted!** These scripts are only tested on
-synthetic images so far, and a real Inazuma letter did not decode into English (see
-[Known limitations](#known-limitations)). If you have screenshots of inscriptions — ideally with what
-they say — please [open an issue](https://github.com/JustKirill1/genshin-script-translator/issues) or a
-pull request (name them `docs/images/example-<region>.png`).
+**Fontaine** — a shop sign, *"COUTURE"* (letter detection *By colour*):
+
+![Fontaine sign](docs/images/example-fontaine.png)
+
+**Ancient Teyvat script** — *"MEA LIBERTAS MEUS CANOR"*, Latin for "my freedom, my song". The letters are
+read exactly; the text is not English, so the dictionary has nothing to add:
+
+![Ancient script inscription](docs/images/example-ancient-teyvat.png)
+
+**Inazuma** — Inazuman text is romanized Japanese, but usually only the first letter of each syllable is
+written: か, き, く, け, こ (ka, ki, ku, ke, ko) all become "K"; voicing, long vowels and ん are often
+dropped ([Genshin Impact Wiki](https://genshin-impact.fandom.com/wiki/Inazuman_Script)). So the app
+outputs a letter skeleton such as `MSMSKSTRKNKN…` — each glyph read correctly, but turning it back
+into Japanese needs context and is left to the reader. The English dictionary is not used for Inazuma.
+
+![Inazuman letter](docs/images/example-inazuman.png)
+
+**Desert (Deshret) and Nod-Krai — screenshots wanted!** These two scripts are only tested on synthetic
+images so far. If you have screenshots of inscriptions — ideally with what they say — please
+[open an issue](https://github.com/JustKirill1/genshin-script-translator/issues) or a pull request
+(name them `docs/images/example-<region>.png`).
 
 ## Download and run
 
@@ -84,8 +102,6 @@ beside it.
    English (corrected words in green) and the raw letter-by-letter reading.
 4. **Correct and teach.** Click a glyph:
 
-   ![Correction menu](docs/images/correction-menu.png)
-
    - pick another letter or type one — the glyph is saved to your library (*Learn from corrections*);
    - *"X" is right — save as a sample* confirms a correct letter;
    - *Remove (not a letter)* drops noise from the text; *Remove and learn as noise* also teaches the
@@ -98,8 +114,6 @@ The game font differs a little from the alphabet charts, so ten or twenty correc
 improve recognition of a script.
 
 ### Glyph library
-
-![Glyph library](docs/images/library.png)
 
 *Tools → Glyph library* (`Ctrl+L`) lists all samples per script with their source — **built-in**
 (shipped with the app), **mine** (learned on this computer) or **imported** (with the author's
@@ -133,7 +147,8 @@ duplicates are skipped. To share a library with everyone, send it via a pull req
 - Real screenshots (`tests/real`, 6 inscriptions from Mondstadt and Fontaine, each also mirrored and
   upside down — 18 cases): script and orientation detected correctly in every case, **≈3 % character
   error rate** both without learned samples and in a leave-one-out test.
-- A six-line Sumeru inscription (above) was read without a single wrong letter.
+- Real inscriptions from Mondstadt, Sumeru, Fontaine, Inazuma and the ancient script (see Examples)
+  were read without a single wrong letter.
 
 The real-screenshot set is small, so expect lower accuracy on other places until more samples are
 collected.
@@ -149,10 +164,11 @@ collected.
   screenshot at a higher resolution.
 - **Text at an angle or in perspective** (signs on walls seen from the side) is not straightened.
 - **The in-game font differs from the fan-made charts** in places — teach the app with corrections.
-- Only Teyvat Common, Fontaine and Sumeru have been checked on real screenshots so far. A real
-  **Inazuma** letter was matched to the chart glyphs with high confidence but did not decode into
-  English — the game may use the Inazuman script differently from the chart (it looks kana-based).
-  Treat Inazuma results with caution until this is figured out.
+- **Inazuma** output is abbreviated romanized Japanese (first letter of each syllable), not English —
+  the app does not reconstruct the Japanese text.
+- **Non-English text** (e.g. Latin written in the ancient script): if the dictionary splits words
+  oddly, turn off *Dictionary correction* — the letter-by-letter reading is shown anyway.
+- Deshret and Nod-Krai have not been checked on real screenshots yet.
 - The dictionary does not understand meaning: it may pick `NOTE AT` instead of `NOT EAT`, and it
   occasionally splits unknown names.
 - The Nod-Krai chart has no signs for J, Q and X; two signs of the ancient script are undeciphered.
@@ -223,12 +239,13 @@ values and set `"_language_name"`; it appears in Settings. `pytest` checks that 
 программа распознаёт каждый знак, сопоставляет его латинской букве и исправляет слова по
 английскому словарю.
 
-![Главное окно](docs/images/app-overview.png)
+![Главное окно: расшифрованное письмо из Мондштадта](docs/images/example-teyvat-general.png)
 
 ## Возможности
 
 - **7 письменностей**, определяются автоматически: общий язык Тейвата (Мондштадт, Ли Юэ),
-  Инадзума, Сумеру, Пустыня (Дешрет), Фонтейн, древнетейватское письмо и Нод-Край.
+  Инадзума, Сумеру, Пустыня (Дешрет), Фонтейн, древнетейватское письмо и Нод-Край. (Текст
+  Инадзумы — сокращённый японский латиницей, а не английский, см. «Примеры».)
 - **Скриншот на входе — текст на выходе**: вставка из буфера (`Win+Shift+S`, затем `Ctrl+V`, или
   программа сама следит за буфером), открытие файла, перетаскивание в окно, снимок экрана (`F9`).
 - **Выделение произвольной формы**: прямоугольник, лассо и ластик (`Alt`), чтобы вырезать рамки
@@ -246,20 +263,38 @@ values and set `"_language_name"`; it appears in Settings. `pytest` checks that 
 
 ## Примеры
 
-| Мондштадт (общий язык Тейвата) | Фонтейн |
-|---|---|
-| ![Вывеска Мондштадта](docs/images/example-mondstadt.png) | ![Надпись Фонтейна](docs/images/example-fontaine.png) |
+На всех скриншотах программа читает настоящие надписи из игры.
+
+**Общий язык Тейвата (Мондштадт)** — письмо выше: *«TO DEAR MISS BARBARA / I HAVE STOLEN AND BURIED
+YOUR / MOST PRECIOUS THING»*.
 
 **Сумеру** — *«FAREWELL ATOSSA / I APOLOGIZE / FOR MAKING YOU KNOW ME / UNWILLINGLY / STILL I DONT
-WISH / YOU TO FORGET ME»*, прочитано с полного скриншота 1920×1080:
+WISH / YOU TO FORGET ME»*, с полного скриншота 1920×1080:
 
 ![Надпись Сумеру](docs/images/example-sumeru.png)
 
-**Инадзума, Дешрет, Нод-Край, древнее письмо — нужны скриншоты!** Пока эти письменности проверены
-только на синтетических картинках, а настоящее письмо Инадзумы не расшифровалось в английский (см.
-[Известные проблемы](#известные-проблемы)). Если у тебя есть скриншоты надписей — лучше вместе с тем,
-что на них написано, — [создай issue](https://github.com/JustKirill1/genshin-script-translator/issues)
-или pull request (имена файлов `docs/images/example-<регион>.png`).
+**Фонтейн** — вывеска магазина, *«COUTURE»* (выделение букв «По цвету»):
+
+![Вывеска Фонтейна](docs/images/example-fontaine.png)
+
+**Древнетейватское письмо** — *«MEA LIBERTAS MEUS CANOR»*, по-латыни «моя свобода, моя песня». Буквы
+прочитаны точно; текст не английский, поэтому словарю тут нечего исправлять:
+
+![Надпись древним письмом](docs/images/example-ancient-teyvat.png)
+
+**Инадзума** — текст Инадзумы — это японский латиницей, но обычно пишется только первая буква каждого
+слога: か, き, く, け, こ (ka, ki, ku, ke, ko) все становятся «K»; звонкость, долгие гласные и ん часто
+опускаются ([Genshin Impact Wiki](https://genshin-impact.fandom.com/wiki/Inazuman_Script)). Поэтому
+программа выдаёт буквенный «скелет» вроде `MSMSKSTRKNKN…` — каждый знак прочитан верно, но вернуть
+из него японский текст можно только по контексту, это остаётся читателю. Английский словарь для
+Инадзумы не применяется.
+
+![Письмо Инадзумы](docs/images/example-inazuman.png)
+
+**Пустыня (Дешрет) и Нод-Край — нужны скриншоты!** Эти две письменности пока проверены только на
+синтетических картинках. Если у тебя есть скриншоты надписей — лучше вместе с тем, что на них написано, —
+[создай issue](https://github.com/JustKirill1/genshin-script-translator/issues) или pull request
+(имена файлов `docs/images/example-<регион>.png`).
 
 ## Скачать и запустить
 
@@ -296,8 +331,6 @@ python main.py
    (исправленные слова зелёным) и сырое побуквенное прочтение.
 4. **Исправляй и обучай.** Клик по знаку:
 
-   ![Меню исправления](docs/images/correction-menu.png)
-
    - выбери другую букву или введи свою — знак сохранится в библиотеку («Запоминать исправления»);
    - «"X" верно — запомнить образец» подтверждает правильную букву;
    - «Убрать (это не буква)» выкидывает шум из текста; «Убрать и запомнить как шум» вдобавок учит
@@ -310,8 +343,6 @@ python main.py
 улучшает распознавание письменности.
 
 ### Библиотека букв
-
-![Библиотека букв](docs/images/library.png)
 
 «Инструменты → Библиотека букв» (`Ctrl+L`) показывает все образцы по письменностям с источником —
 **встроенный** (идёт с программой), **мой** (выучен на этом компьютере) или **импорт** (с ником
@@ -344,7 +375,8 @@ python main.py
 - Реальные скриншоты (`tests/real`, 6 надписей Мондштадта и Фонтейна, каждая ещё зеркально и вверх
   ногами — 18 случаев): письменность и ориентация определены верно во всех случаях, **ошибка ≈3 %
   символов** и без выученных образцов, и в проверке «учимся на всех, кроме одного».
-- Шестистрочная надпись Сумеру (выше) прочитана без единой ошибки в буквах.
+- Настоящие надписи Мондштадта, Сумеру, Фонтейна, Инадзумы и древнего письма (см. «Примеры»)
+  прочитаны без единой ошибки в буквах.
 
 Реальных скриншотов пока мало, так что в других местах точность будет ниже, пока не наберётся
 больше образцов.
@@ -360,10 +392,11 @@ python main.py
   скриншот в большем разрешении.
 - **Текст под углом или в перспективе** (вывески на стенах, снятые сбоку) не выпрямляется.
 - **Игровой шрифт местами отличается от фанатских таблиц** — доучивай программу исправлениями.
-- На реальных скриншотах пока проверены только общий язык Тейвата, Фонтейн и Сумеру. Настоящее
-  письмо **Инадзумы** сопоставилось со знаками таблицы с высокой уверенностью, но не расшифровалось
-  в английский — похоже, игра использует письменность Инадзумы иначе, чем описано в таблице (она
-  выглядит основанной на кане). Пока к результатам по Инадзуме стоит относиться осторожно.
+- Результат для **Инадзумы** — сокращённый японский латиницей (первая буква каждого слога), а не
+  английский; программа не восстанавливает японский текст.
+- **Не английский текст** (например, латынь древним письмом): если словарь странно режет слова,
+  выключи «Словарную коррекцию» — побуквенное прочтение показывается в любом случае.
+- Дешрет и Нод-Край на реальных скриншотах пока не проверены.
 - Словарь не понимает смысла: может выбрать `NOTE AT` вместо `NOT EAT` и иногда разрезает
   незнакомые имена.
 - В таблице Нод-Края нет знаков для J, Q и X; два знака древнего письма не расшифрованы.

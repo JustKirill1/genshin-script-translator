@@ -233,7 +233,8 @@ class MainWindow(QMainWindow):
         res = QWidget()
         rl = QVBoxLayout(res)
         rl.setContentsMargins(4, 6, 4, 4)
-        rl.addWidget(QLabel(tr("panel.text")))
+        self.lbl_text = QLabel(tr("panel.text"))
+        rl.addWidget(self.lbl_text)
         self.txt_main = QTextEdit()
         self.txt_main.setReadOnly(True)
         self.txt_main.setFont(QFont("Segoe UI", 13))
@@ -506,6 +507,7 @@ class MainWindow(QMainWindow):
         if note != f"alphabet_note.{a.key}":
             info += f"<br><span style='color:#999'>{html.escape(note)}</span>"
         self.lbl_info.setText(info)
+        self.lbl_text.setText(tr("panel.text") if a.spec.english else tr("panel.text_romaji"))
         lines_html = []
         for line in r.corrected:
             words = [f"<span style='color:#8fd18f'>{html.escape(t)}</span>" if changed else html.escape(t)

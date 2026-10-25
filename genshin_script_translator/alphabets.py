@@ -27,6 +27,7 @@ class AlphabetSpec:
     kind: str                       # "grid" | "nodkrai"
     labels: list                    # cell labels in reading order; None = skip the cell
     notes: str = ""                 # English note; i18n key is "alphabet_note.<key>"
+    english: bool = True            # text is English, so the English dictionary applies
 
 
 SPECS: list[AlphabetSpec] = [
@@ -38,8 +39,9 @@ SPECS: list[AlphabetSpec] = [
     AlphabetSpec(
         "inazuma", "Inazuma", "Inazuma_letters.webp", "grid",
         LETTERS + ["S", "I"],
-        "Letters may stand for their voiced/voiceless pair; L, Q, V, X are sometimes used for "
-        "other letters; the vertical bar may be a phrase separator.",
+        "Inazuman text is romanized Japanese, usually written with only the first letter of each "
+        "syllable (ka, ki, ku → K), so the result is a letter skeleton, not English.",
+        english=False,
     ),
     AlphabetSpec("sumeru", "Sumeru", "Sumeru_Alphabet.webp", "grid", LETTERS),
     AlphabetSpec("deshret", "Desert (Deshret)", "Deshret_Alphabet.webp", "grid", LETTERS),

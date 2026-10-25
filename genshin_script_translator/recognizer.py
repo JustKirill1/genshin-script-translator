@@ -667,6 +667,8 @@ class Engine:
     # -------------------------------------------------------------- dictionary
     def apply_dictionary(self, r: Result, enabled: bool = True):
         r.corrected = []
+        if not r.alphabet.spec.english:     # e.g. Inazuma: romanized Japanese, not English
+            enabled = False
         for li, line in enumerate(r.lines):
             if not enabled:
                 r.corrected.append([(r.word_text(li, wi), False) for wi in range(len(line))])

@@ -48,6 +48,7 @@
   "panel.recognize": "Recognize  (F5)",
   "panel.recognizing": "Recognizing…",
   "panel.text": "Text (English):",
+  "panel.text_romaji": "Text (abbreviated romanized Japanese):",
   "panel.raw": "Letter by letter, without the dictionary:",
   "panel.copy": "Copy text",
   "panel.accept_tip": "Confirm all letters you have not corrected yet and save them as samples",
@@ -82,7 +83,7 @@
   "alphabet.fontaine": "Fontaine",
   "alphabet.ancient": "Ancient Teyvat script",
   "alphabet.nodkrai": "Nod-Krai",
-  "alphabet_note.inazuma": "Letters may stand for their voiced/voiceless pair; L, Q, V, X are sometimes used for other letters; the vertical bar may be a phrase separator.",
+  "alphabet_note.inazuma": "Inazuman text is romanized Japanese, usually written with only the first letter of each syllable (ka, ki, ku → K), so the result is a letter skeleton, not English. The dictionary is not used.",
   "alphabet_note.ancient": "Two signs of the chart are undeciphered and are shown as \"?\".",
   "alphabet_note.nodkrai": "The chart has no signs for J, Q and X.",
 

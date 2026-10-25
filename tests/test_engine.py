@@ -79,6 +79,14 @@ def test_region_mask_limits_recognition(engine):
     assert all(g.x + g.w // 2 >= img.shape[1] // 2 - 2 for g in half.glyphs)
 
 
+def test_inazuma_skips_english_dictionary(bare_engine):
+    """Inazuman text is abbreviated romanized Japanese: the English dictionary must not touch it."""
+    img, truth = render(bare_engine.alphabet("inazuma"), "MSMSKSTR KNKNSNS", np.random.default_rng(9), height=32)
+    r = bare_engine.recognize(img, Settings(alphabet="inazuma"))
+    assert r.corrected_text() == r.raw_text()
+    assert all(not changed for line in r.corrected for _, changed in line)
+
+
 def test_remove_glyph_renumbers(engine):
     r = engine.recognize(_load("mond2.png", (95, 92, 330, 118)), Settings())
     n = len(r.glyphs)

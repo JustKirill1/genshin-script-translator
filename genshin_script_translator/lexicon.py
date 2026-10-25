@@ -135,11 +135,29 @@ class Lexicon:
                     best[i], back[i] = c, (j, ws[k], ws[k] != raw_seg or crossed > 0 or j not in starts)
         if not np.isfinite(best[N]):
             return [(raw, False) for raw in raw_all]
-        out = []
+        tokens = []
         i = N
         while i > 0:
             j, text, changed = back[i]
-            out.append((text, changed))
+            tokens.append((j, i, text, changed))
             i = j
-        out.reverse()
+        tokens.reverse()
+        # A visible word chopped into nothing but short words (MEUS → ME US, CANOR → CAN OR) is far
+        # more likely a foreign word or a name than English: keep it as it was read.
+        out, k = [], 0
+        while k < len(tokens):
+            j = tokens[k][0]
+            if j in vw_end:
+                b, raw = vw_end[j]
+                group = []
+                m = k
+                while m < len(tokens) and tokens[m][1] <= b:
+                    group.append(tokens[m])
+                    m += 1
+                if len(group) >= 2 and group[-1][1] == b and max(len(t[2]) for t in group) <= 3:
+                    out.append((raw, False))
+                    k = m
+                    continue
+            out.append((tokens[k][2], tokens[k][3]))
+            k += 1
         return out

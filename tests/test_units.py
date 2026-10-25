@@ -73,6 +73,9 @@ def test_decoder_with_real_dictionary():
     for raw, want in lines.items():
         got = " ".join(t for t, _ in lex.decode_line([(_scores(raw), raw, {})], LETTERS))
         assert got == want, (raw, got)
+    # Latin on the ancient script (docs/images/example-ancient-teyvat.png) must not become "ME US CAN OR"
+    words = [(_scores(w), w, {}) for w in ("MEALIBERTAS", "MEUS", "CANOR")]
+    assert " ".join(t for t, _ in lex.decode_line(words, LETTERS)) == "MEALIBERTAS MEUS CANOR"
 
 
 def test_history_roundtrip():
