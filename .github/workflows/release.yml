@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    name: Windows build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt pyinstaller pytest
+      - name: Tests
+        run: pytest -q --ignore=tests/test_gui_smoke.py
+      - name: Build
+        run: pyinstaller packaging/genshin-script-translator.spec --noconfirm
+      - name: Package
+        shell: pwsh
+        run: |
+          Copy-Item README.md, LICENSE dist/GenshinScriptTranslator/
+          Compress-Archive -Path dist/GenshinScriptTranslator -DestinationPath "GenshinScriptTranslator-${{ github.ref_name }}-windows.zip"
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: GenshinScriptTranslator-${{ github.ref_name }}-windows.zip
+          generate_release_notes: true

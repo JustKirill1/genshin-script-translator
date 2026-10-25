@@ -37,15 +37,24 @@ def run(argv: list[str] | None = None) -> int:
     set_language(settings.language)
 
     from PySide6.QtCore import Qt, QTimer
-    from PySide6.QtGui import QGuiApplication
+    from PySide6.QtGui import QGuiApplication, QIcon
     from PySide6.QtWidgets import QApplication
 
     from .main_window import MainWindow
     from .theme import apply_dark_theme
 
+    if sys.platform.startswith("win"):
+        try:    # own taskbar icon instead of the Python one
+            import ctypes
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("JustKirill1.GenshinScriptTranslator")
+        except Exception:  # noqa: BLE001
+            pass
     QGuiApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
     app = QApplication(argv)
     app.setApplicationName(APP_NAME)
+    icon = os.path.join(paths.package_dir(), "assets", "icon.png")
+    if os.path.isfile(icon):
+        app.setWindowIcon(QIcon(icon))
     apply_dark_theme(app)
     w = MainWindow(settings)
     w.show()
