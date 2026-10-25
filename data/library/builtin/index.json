@@ -1,0 +1,411 @@
+{
+ "format": "gsrlib",
+ "version": 1,
+ "samples": [
+  {
+   "id": "22653e545d6d85a4",
+   "alphabet": "fontaine",
+   "char": "F",
+   "file": "fontaine/F_22653e545d6d85a4.png",
+   "rel_height": 0.942,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "360cf9a8e8fa44dc",
+   "alphabet": "fontaine",
+   "char": "R",
+   "file": "fontaine/R_360cf9a8e8fa44dc.png",
+   "rel_height": 1.011,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "9fac7ec08d639034",
+   "alphabet": "fontaine",
+   "char": "A",
+   "file": "fontaine/A_9fac7ec08d639034.png",
+   "rel_height": 1.08,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "0288d364026cf25d",
+   "alphabet": "fontaine",
+   "char": "G",
+   "file": "fontaine/G_0288d364026cf25d.png",
+   "rel_height": 0.965,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "c07d84e6a08b0361",
+   "alphabet": "fontaine",
+   "char": "N",
+   "file": "fontaine/N_c07d84e6a08b0361.png",
+   "rel_height": 0.965,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "81db45e7c9db09a5",
+   "alphabet": "fontaine",
+   "char": "C",
+   "file": "fontaine/C_81db45e7c9db09a5.png",
+   "rel_height": 1.011,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "121d4eb43d4156f7",
+   "alphabet": "fontaine",
+   "char": "E",
+   "file": "fontaine/E_121d4eb43d4156f7.png",
+   "rel_height": 0.965,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a09deb787bae9972",
+   "alphabet": "fontaine",
+   "char": "S",
+   "file": "fontaine/S_a09deb787bae9972.png",
+   "rel_height": 0.988,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "5ccd37eb756939a5",
+   "alphabet": "fontaine",
+   "char": "T",
+   "file": "fontaine/T_5ccd37eb756939a5.png",
+   "rel_height": 1.0,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "59d1eadd72214f62",
+   "alphabet": "fontaine",
+   "char": "H",
+   "file": "fontaine/H_59d1eadd72214f62.png",
+   "rel_height": 0.886,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "75deecc23c79f0e0",
+   "alphabet": "fontaine",
+   "char": "O",
+   "file": "fontaine/O_75deecc23c79f0e0.png",
+   "rel_height": 1.057,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a8e90046d70478f1",
+   "alphabet": "fontaine",
+   "char": "S",
+   "file": "fontaine/S_a8e90046d70478f1.png",
+   "rel_height": 1.0,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "6afb901ac11e7454",
+   "alphabet": "fontaine",
+   "char": "E",
+   "file": "fontaine/E_6afb901ac11e7454.png",
+   "rel_height": 1.029,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "2f24937f46431df1",
+   "alphabet": "fontaine",
+   "char": "W",
+   "file": "fontaine/W_2f24937f46431df1.png",
+   "rel_height": 1.057,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "56336e9f2e5d7c0b",
+   "alphabet": "fontaine",
+   "char": "H",
+   "file": "fontaine/H_56336e9f2e5d7c0b.png",
+   "rel_height": 0.886,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "32abd20834cddd16",
+   "alphabet": "fontaine",
+   "char": "D",
+   "file": "fontaine/D_32abd20834cddd16.png",
+   "rel_height": 1.0,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "749b1482392fae72",
+   "alphabet": "fontaine",
+   "char": "N",
+   "file": "fontaine/N_749b1482392fae72.png",
+   "rel_height": 0.829,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "52fb2e439717ac4b",
+   "alphabet": "fontaine",
+   "char": "R",
+   "file": "fontaine/R_52fb2e439717ac4b.png",
+   "rel_height": 1.029,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "1371a1c004796e73",
+   "alphabet": "fontaine",
+   "char": "K",
+   "file": "fontaine/K_1371a1c004796e73.png",
+   "rel_height": 0.914,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "af124bfb70ed3843",
+   "alphabet": "fontaine",
+   "char": "A",
+   "file": "fontaine/A_af124bfb70ed3843.png",
+   "rel_height": 1.114,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "274441c5078553ee",
+   "alphabet": "fontaine",
+   "char": "L",
+   "file": "fontaine/L_274441c5078553ee.png",
+   "rel_height": 0.971,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "17a4be6440690f68",
+   "alphabet": "fontaine",
+   "char": "N",
+   "file": "fontaine/N_17a4be6440690f68.png",
+   "rel_height": 0.971,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "e913654f658829d7",
+   "alphabet": "common",
+   "char": "O",
+   "file": "common/O_e913654f658829d7.png",
+   "rel_height": 1.16,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "7fd633c4bedf7f90",
+   "alphabet": "common",
+   "char": "P",
+   "file": "common/P_7fd633c4bedf7f90.png",
+   "rel_height": 0.58,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "9815ad11ad7c748e",
+   "alphabet": "common",
+   "char": "E",
+   "file": "common/E_9815ad11ad7c748e.png",
+   "rel_height": 1.108,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a3faeb4b05ae2458",
+   "alphabet": "common",
+   "char": "N",
+   "file": "common/N_a3faeb4b05ae2458.png",
+   "rel_height": 1.028,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "c08bc28faf3aa92b",
+   "alphabet": "common",
+   "char": "F",
+   "file": "common/F_c08bc28faf3aa92b.png",
+   "rel_height": 1.22,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "eacbee17a8ebe0b8",
+   "alphabet": "common",
+   "char": "I",
+   "file": "common/I_eacbee17a8ebe0b8.png",
+   "rel_height": 1.379,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "662a502c778bd805",
+   "alphabet": "common",
+   "char": "N",
+   "file": "common/N_662a502c778bd805.png",
+   "rel_height": 1.273,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "9e5569c3bdfe133a",
+   "alphabet": "common",
+   "char": "E",
+   "file": "common/E_9e5569c3bdfe133a.png",
+   "rel_height": 1.326,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "1d7d9e7f2c72de27",
+   "alphabet": "common",
+   "char": "O",
+   "file": "common/O_1d7d9e7f2c72de27.png",
+   "rel_height": 1.326,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a9e8c2d2ab2b04c0",
+   "alphabet": "common",
+   "char": "D",
+   "file": "common/D_a9e8c2d2ab2b04c0.png",
+   "rel_height": 1.273,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a1bb3e1e0fd1e6b6",
+   "alphabet": "common",
+   "char": "S",
+   "file": "common/S_a1bb3e1e0fd1e6b6.png",
+   "rel_height": 1.182,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "28efa71d12ce80f3",
+   "alphabet": "common",
+   "char": "C",
+   "file": "common/C_28efa71d12ce80f3.png",
+   "rel_height": 1.01,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "8a0c579efedc0ad5",
+   "alphabet": "common",
+   "char": "H",
+   "file": "common/H_8a0c579efedc0ad5.png",
+   "rel_height": 1.059,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "3a8c2f9deeb13aa1",
+   "alphabet": "common",
+   "char": "U",
+   "file": "common/U_3a8c2f9deeb13aa1.png",
+   "rel_height": 0.936,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "a39de90f9a7b7cca",
+   "alphabet": "common",
+   "char": "L",
+   "file": "common/L_a39de90f9a7b7cca.png",
+   "rel_height": 0.961,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "fcf2dc2f261a837d",
+   "alphabet": "common",
+   "char": "Z",
+   "file": "common/Z_fcf2dc2f261a837d.png",
+   "rel_height": 1.133,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "c51d4f707ff9022f",
+   "alphabet": "common",
+   "char": "S",
+   "file": "common/S_c51d4f707ff9022f.png",
+   "rel_height": 1.024,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "bb4e61084174b212",
+   "alphabet": "common",
+   "char": "M",
+   "file": "common/M_bb4e61084174b212.png",
+   "rel_height": 0.927,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "8976f4752c4e8e39",
+   "alphabet": "common",
+   "char": "I",
+   "file": "common/I_8976f4752c4e8e39.png",
+   "rel_height": 1.024,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "d001b759acb2dd06",
+   "alphabet": "common",
+   "char": "T",
+   "file": "common/T_d001b759acb2dd06.png",
+   "rel_height": 1.024,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "f24cb8e0ffee2b17",
+   "alphabet": "common",
+   "char": "H",
+   "file": "common/H_f24cb8e0ffee2b17.png",
+   "rel_height": 0.976,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "4305e51c7dc0a32d",
+   "alphabet": "common",
+   "char": "O",
+   "file": "common/O_4305e51c7dc0a32d.png",
+   "rel_height": 0.341,
+   "author": "",
+   "created": ""
+  },
+  {
+   "id": "29842f36da09a48d",
+   "alphabet": "common",
+   "char": "P",
+   "file": "common/P_29842f36da09a48d.png",
+   "rel_height": 1.024,
+   "author": "",
+   "created": ""
+  }
+ ]
+}

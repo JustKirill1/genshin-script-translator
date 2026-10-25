@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Build
+build/
+dist/
+*.spec.bak
+
+# Local data
+error.log
+portable.txt
+userdata/
+*.gsrlib
+!community/*.gsrlib
+tests/out/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
