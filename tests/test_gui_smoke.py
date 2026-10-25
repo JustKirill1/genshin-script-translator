@@ -69,6 +69,8 @@ def test_main_window_flow(tmp_path, monkeypatch):
         lw.page()._show_details()
 
         exp = ExportLibraryDialog(w.engine.library, w.engine.alphabets, "tester")
+        exp.chk_builtin.setChecked(True)                     # the test's own samples may all be duplicates
+        assert "common" in exp.checks.selected()
         path = str(tmp_path / f"t-{lang}.gsrlib")
         n = w.engine.library.export(path, exp.checks.selected(), True, True, "tester")
         assert n > 0
