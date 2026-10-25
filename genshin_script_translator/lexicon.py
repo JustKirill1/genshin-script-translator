@@ -55,7 +55,7 @@ class Lexicon:
 
     def decode_line(self, words: list[tuple[np.ndarray, str, dict]], chars: list[str],
                     pos_tol: float = 0.12, tol: float = 0.05, lam: float = 0.04, mu: float = 0.03,
-                    delta: float = 0.15, beta: float = 0.10, gamma: float = 0.06,
+                    delta: float = 0.15, beta: float = 0.10, gamma: float = 0.06, single: float = 0.10,
                     max_len: int = 16) -> list[tuple[str, bool]]:
         """Split a line into dictionary words without trusting the detected spaces.
 
@@ -64,7 +64,8 @@ class Lexicon:
         neighbouring visible word (penalty ``gamma`` per skipped space). An unknown word is only
         allowed as a whole visible word (``mu`` per letter), so names are not chopped into random
         short words. A word that does not match a visible word *and* changes letters pays
-        ``delta`` per change. Only "doubtful" letters can change: a replacement must score within
+        ``delta`` per change, and a one-letter word (A, I) carved out of a longer visible word pays
+        ``single`` — otherwise names like ATOSSA turn into "A TOSS A". Only "doubtful" letters can change: a replacement must score within
         ``pos_tol`` of the best letter. Returns [(text, corrected?)].
         """
         rows, raw_all, starts, letter_ok, bounds = [], [], set(), [], []
@@ -125,7 +126,7 @@ class Lexicon:
                     continue
                 crossed = sum(1 for x in starts if j < x < i)
                 aligned = j in starts and (i in starts or i == N) and crossed == 0
-                val = 1.5 * total - 0.10 * bonus + (0.0 if aligned else delta * changes)
+                val = 1.5 * total - 0.10 * bonus + (0.0 if aligned else delta * changes + (single if L == 1 else 0.0))
                 val = np.where(ok, val, np.inf)
                 k = int(np.argmin(val))
                 c = best[j] + val[k] + lam + pen_start + gamma * crossed

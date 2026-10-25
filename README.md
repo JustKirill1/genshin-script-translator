@@ -37,10 +37,16 @@ recognizes each glyph, maps it to its Latin letter and fixes the words with an E
 |---|---|
 | ![Mondstadt sign](docs/images/example-mondstadt.png) | ![Fontaine inscription](docs/images/example-fontaine.png) |
 
-**Inazuma, Sumeru, Deshret, Nod-Krai, ancient script — screenshots wanted!** These scripts are only
-tested on synthetic images so far. If you have screenshots of inscriptions, please
-[open an issue](https://github.com/JustKirill1/genshin-script-translator/issues) or a pull request
-(name them `docs/images/example-<region>.png`).
+**Sumeru** — *"FAREWELL ATOSSA / I APOLOGIZE / FOR MAKING YOU KNOW ME / UNWILLINGLY / STILL I DONT
+WISH / YOU TO FORGET ME"*, read from a full 1920×1080 screenshot:
+
+![Sumeru inscription](docs/images/example-sumeru.png)
+
+**Inazuma, Deshret, Nod-Krai, ancient script — screenshots wanted!** These scripts are only tested on
+synthetic images so far, and a real Inazuma letter did not decode into English (see
+[Known limitations](#known-limitations)). If you have screenshots of inscriptions — ideally with what
+they say — please [open an issue](https://github.com/JustKirill1/genshin-script-translator/issues) or a
+pull request (name them `docs/images/example-<region>.png`).
 
 ## Download and run
 
@@ -127,9 +133,10 @@ duplicates are skipped. To share a library with everyone, send it via a pull req
 - Real screenshots (`tests/real`, 6 inscriptions from Mondstadt and Fontaine, each also mirrored and
   upside down — 18 cases): script and orientation detected correctly in every case, **≈3 % character
   error rate** both without learned samples and in a leave-one-out test.
+- A six-line Sumeru inscription (above) was read without a single wrong letter.
 
-The real-screenshot set is small and covers only two scripts, so expect lower accuracy on other
-places until more samples are collected.
+The real-screenshot set is small, so expect lower accuracy on other places until more samples are
+collected.
 
 ## Known limitations
 
@@ -142,7 +149,10 @@ places until more samples are collected.
   screenshot at a higher resolution.
 - **Text at an angle or in perspective** (signs on walls seen from the side) is not straightened.
 - **The in-game font differs from the fan-made charts** in places — teach the app with corrections.
-- Only Teyvat Common and Fontaine have been tested on real screenshots so far.
+- Only Teyvat Common, Fontaine and Sumeru have been checked on real screenshots so far. A real
+  **Inazuma** letter was matched to the chart glyphs with high confidence but did not decode into
+  English — the game may use the Inazuman script differently from the chart (it looks kana-based).
+  Treat Inazuma results with caution until this is figured out.
 - The dictionary does not understand meaning: it may pick `NOTE AT` instead of `NOT EAT`, and it
   occasionally splits unknown names.
 - The Nod-Krai chart has no signs for J, Q and X; two signs of the ancient script are undeciphered.
@@ -240,10 +250,16 @@ values and set `"_language_name"`; it appears in Settings. `pytest` checks that 
 |---|---|
 | ![Вывеска Мондштадта](docs/images/example-mondstadt.png) | ![Надпись Фонтейна](docs/images/example-fontaine.png) |
 
-**Инадзума, Сумеру, Дешрет, Нод-Край, древнее письмо — нужны скриншоты!** Пока эти письменности
-проверены только на синтетических картинках. Если у тебя есть скриншоты надписей,
-[создай issue](https://github.com/JustKirill1/genshin-script-translator/issues) или pull request
-(имена файлов `docs/images/example-<регион>.png`).
+**Сумеру** — *«FAREWELL ATOSSA / I APOLOGIZE / FOR MAKING YOU KNOW ME / UNWILLINGLY / STILL I DONT
+WISH / YOU TO FORGET ME»*, прочитано с полного скриншота 1920×1080:
+
+![Надпись Сумеру](docs/images/example-sumeru.png)
+
+**Инадзума, Дешрет, Нод-Край, древнее письмо — нужны скриншоты!** Пока эти письменности проверены
+только на синтетических картинках, а настоящее письмо Инадзумы не расшифровалось в английский (см.
+[Известные проблемы](#известные-проблемы)). Если у тебя есть скриншоты надписей — лучше вместе с тем,
+что на них написано, — [создай issue](https://github.com/JustKirill1/genshin-script-translator/issues)
+или pull request (имена файлов `docs/images/example-<регион>.png`).
 
 ## Скачать и запустить
 
@@ -328,9 +344,10 @@ python main.py
 - Реальные скриншоты (`tests/real`, 6 надписей Мондштадта и Фонтейна, каждая ещё зеркально и вверх
   ногами — 18 случаев): письменность и ориентация определены верно во всех случаях, **ошибка ≈3 %
   символов** и без выученных образцов, и в проверке «учимся на всех, кроме одного».
+- Шестистрочная надпись Сумеру (выше) прочитана без единой ошибки в буквах.
 
-Реальных скриншотов пока мало, и они покрывают только две письменности, так что в других местах
-точность будет ниже, пока не наберётся больше образцов.
+Реальных скриншотов пока мало, так что в других местах точность будет ниже, пока не наберётся
+больше образцов.
 
 ## Известные проблемы
 
@@ -343,7 +360,10 @@ python main.py
   скриншот в большем разрешении.
 - **Текст под углом или в перспективе** (вывески на стенах, снятые сбоку) не выпрямляется.
 - **Игровой шрифт местами отличается от фанатских таблиц** — доучивай программу исправлениями.
-- На реальных скриншотах пока проверены только общий язык Тейвата и Фонтейн.
+- На реальных скриншотах пока проверены только общий язык Тейвата, Фонтейн и Сумеру. Настоящее
+  письмо **Инадзумы** сопоставилось со знаками таблицы с высокой уверенностью, но не расшифровалось
+  в английский — похоже, игра использует письменность Инадзумы иначе, чем описано в таблице (она
+  выглядит основанной на кане). Пока к результатам по Инадзуме стоит относиться осторожно.
 - Словарь не понимает смысла: может выбрать `NOTE AT` вместо `NOT EAT` и иногда разрезает
   незнакомые имена.
 - В таблице Нод-Края нет знаков для J, Q и X; два знака древнего письма не расшифрованы.

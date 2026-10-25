@@ -44,7 +44,8 @@ def _lexicon(words):
 
 
 def test_decoder_splits_and_merges_words():
-    lex = _lexicon(["SMITH", "SHOP", "THOSE", "WHO", "DO", "FINE", "FOOD", "SCHULZ"])
+    lex = _lexicon(["SMITH", "SHOP", "THOSE", "WHO", "DO", "FINE", "FOOD", "SCHULZ", "A", "I", "TOSS",
+                    "APOLOGIZE", "STILL", "DONT", "WISH"])
     out = lex.decode_line([(_scores("SMITHSHOP"), "SMITHSHOP", {})], LETTERS)
     assert [t for t, _ in out] == ["SMITH", "SHOP"]
     words = [(_scores("THOS"), "THOS", {}), (_scores("EWHODO"), "EWHODO", {})]
@@ -53,8 +54,25 @@ def test_decoder_splits_and_merges_words():
     doubtful = _scores("FINC", {3: ("E", 0.85)})
     assert lex.decode_line([(doubtful, "FINC", {})], LETTERS)[0] == ("FINE", True)
     assert lex.decode_line([(_scores("FINC"), "FINC", {})], LETTERS)[0] == ("FINC", False)
+    # one-letter words: fine before a long word, but names are not chopped into "A TOSS A"
+    assert [t for t, _ in lex.decode_line([(_scores("IAPOLOGIZE"), "IAPOLOGIZE", {})], LETTERS)] == ["I", "APOLOGIZE"]
+    assert [t for t, _ in lex.decode_line([(_scores("ATOSSA"), "ATOSSA", {})], LETTERS)] == ["ATOSSA"]
     # unknown names stay whole
     assert lex.decode_line([(_scores("DAMORVILLE"), "DAMORVILLE", {})], LETTERS)[0][0] == "DAMORVILLE"
+
+
+def test_decoder_with_real_dictionary():
+    """The Sumeru inscription from docs/images/example-sumeru.png, read without any spaces."""
+    import os
+    data = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+    lex = Lexicon([(os.path.join(data, "genshin_words.txt"), False), (os.path.join(data, "words_en.txt"), True)])
+    lines = {"FAREWELLATOSSA": "FAREWELL ATOSSA", "IAPOLOGIZE": "I APOLOGIZE",
+             "FORMAKINGYOUKNOWME": "FOR MAKING YOU KNOW ME", "UNWILLINGLY": "UNWILLINGLY",
+             "STILLIDONTWISH": "STILL I DONT WISH", "YOUTOFORGETME": "YOU TO FORGET ME",
+             "SMITHSHOP": "SMITH SHOP", "THOSEWHODO": "THOSE WHO DO"}
+    for raw, want in lines.items():
+        got = " ".join(t for t, _ in lex.decode_line([(_scores(raw), raw, {})], LETTERS))
+        assert got == want, (raw, got)
 
 
 def test_history_roundtrip():
