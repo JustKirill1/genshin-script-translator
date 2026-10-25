@@ -50,8 +50,8 @@ def decode_mask(data: bytes) -> np.ndarray | None:
     return ((img > 127) * 255).astype(np.uint8)
 
 
-def sample_id(alphabet: str, png: bytes) -> str:
-    return hashlib.sha1(alphabet.encode() + b"\0" + png).hexdigest()[:16]
+def sample_id(alphabet: str, char: str, png: bytes) -> str:
+    return hashlib.sha1(f"{alphabet}\0{char}\0".encode() + png).hexdigest()[:16]
 
 
 def _now() -> str:
@@ -160,7 +160,7 @@ class Library:
             source: str = USER, author: str = "", created: str = "") -> Sample | None:
         """Store a sample. Returns None if the very same glyph image is already in the library."""
         png = encode_mask(mask)
-        sid = sample_id(alphabet, png)
+        sid = sample_id(alphabet, char, png)
         if self.get(sid) is not None:
             return None
         sub = os.path.join(self.user_dir, alphabet)
@@ -200,8 +200,18 @@ class Library:
             self._save_user()
             return self.add(s.alphabet, char, m, s.rel_height, USER, s.author) if m is not None else None
         old = self.path_of(s)
-        s.char = char
-        s.file = f"{s.alphabet}/{safe_char_name(char)}_{s.id}.png"
+        try:
+            with open(old, "rb") as f:
+                png = f.read()
+        except OSError:
+            return None
+        new_id = sample_id(s.alphabet, char, png)
+        if self.get(new_id) is not None:          # the same glyph already exists with that letter
+            self.remove(sid)
+            return self.get(new_id)
+        self._mask_cache.pop(s.id, None)
+        s.id, s.char = new_id, char
+        s.file = f"{s.alphabet}/{safe_char_name(char)}_{new_id}.png"
         try:
             os.replace(old, self.path_of(s))
         except OSError:
@@ -333,7 +343,7 @@ class Library:
         items = []
         for alphabet, char, mask, rel in samples:
             png = encode_mask(mask)
-            sid = sample_id(alphabet, png)
+            sid = sample_id(alphabet, char, png)
             rel_file = f"{alphabet}/{safe_char_name(char)}_{sid}.png"
             os.makedirs(os.path.join(self.builtin_dir, alphabet), exist_ok=True)
             with open(os.path.join(self.builtin_dir, rel_file), "wb") as f:
