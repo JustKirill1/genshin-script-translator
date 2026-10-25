@@ -88,6 +88,12 @@ class History:
             except OSError:
                 pass
 
+    def update(self, eid: str, text: str, raw: str):
+        for e in self.entries:
+            if e.id == eid:
+                e.text, e.raw = text, raw
+        self._save()
+
     def set_limit(self, limit: int):
         self.limit = limit
         self._trim()
